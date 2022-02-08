@@ -1,4 +1,4 @@
-import { Facebook, Instagram, WhatsApp, Twitter,
+import { Facebook, Instagram, WhatsApp,
     MailOutline,
     Phone,
     Room } from '@material-ui/icons'

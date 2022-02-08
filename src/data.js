@@ -1,7 +1,7 @@
 export const sliderItems = [
     {
       id: 1,
-      img: "https://www.viviendasaludable.es/wp-content/uploads/2020/11/Ventana-Aluminio-o-PVC.jpg",
+      img: "https://blabladeco.com/wp-content/uploads/sites/3/2018/09/POR-QU%C3%89-PONER-CARPINTER%C3%8DA-DE-ALUMINIO-1.jpg",
       title: "Aberturas de Calidad",
       desc: "Somos una empresa dedicada a la venta y colocación de aberturas de aluminio, vidriería, herrería, mamparas de baño, frentes de placares y cerramientos en general.",
       bg: "f5fafd",
@@ -15,7 +15,7 @@ export const sliderItems = [
     },
     {
       id: 3,
-      img: "http://institutocaedi.com.ar/wp-content/uploads/2018/01/Carpinteri%CC%81a-de-Aluminio-1170x628.jpg",
+      img: "https://www.viviendasaludable.es/wp-content/uploads/2020/11/Ventana-Aluminio-o-PVC.jpg",
       title: "Presupuesto Online",
       desc: "Precisamos las medidas exactas. tipología y tipo de vidrio.",
       bg: "f5fafd",

@@ -1,6 +1,7 @@
-import React from 'react'
+import { useState, useEffect } from "react";
+import {db} from "../Firebase"
+import { collection, getDocs, query} from "firebase/firestore";
 import styled from 'styled-components'
-import { categories } from '../data'
 import CategoryItem from './CategoryItem'
 
 const Container = styled.div`
@@ -10,9 +11,23 @@ const Container = styled.div`
 `
 
 const Categories = () => {
+
+  const [ titleCategory, setTitleCategory ] = useState([])
+
+  useEffect( () => {
+    async function fetchData(){
+    const querySnapshot = await getDocs(query(collection(db, "category")));
+      let categoryArray = []
+      querySnapshot.forEach((doc) => {
+        categoryArray.push({...doc.data(), id: doc.id});
+      });
+      setTitleCategory(categoryArray)
+    }
+    fetchData();
+}, [])
     return (
       <Container>
-        {categories.map((item) => (
+        {titleCategory.map((item) => (
           <CategoryItem item={item} key={item.id} />
         ))}
       </Container>

@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 const Container = styled.div``;
 
 
-const ContactoPage = () => {
+const CategoriesPage = () => {
   return (
     <Container>
       <Navbar />
@@ -16,4 +16,4 @@ const ContactoPage = () => {
   );
 };
 
-export default ContactoPage;
+export default CategoriesPage;
