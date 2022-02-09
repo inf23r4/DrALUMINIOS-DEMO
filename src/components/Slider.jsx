@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import { Container, Arrow, Wrapper, Slide, ImgContainer, ImgSlider,InfoContainer, Title, Desc } from "./SliderStyles"
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {db} from "../Firebase"
 import { collection, getDocs, query} from "firebase/firestore";
-import { sliderItems } from "../data";
+
 
 
 

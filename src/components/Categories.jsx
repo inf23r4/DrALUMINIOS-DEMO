@@ -21,17 +21,20 @@ const Categories = () => {
       querySnapshot.forEach((doc) => {
         categoryArray.push({...doc.data(), id: doc.id});
       });
+      console.log(categoryArray)
       setTitleCategory(categoryArray)
     }
     fetchData();
 }, [])
     return (
       <Container>
-        {titleCategory.map((item) => (
-          <CategoryItem item={item} key={item.id} />
+        {titleCategory.map((data) => (
+          <CategoryItem data={data} key={data.id} />
         ))}
       </Container>
     );
   };
 
 export default Categories;
+
+

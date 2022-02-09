@@ -1,6 +1,10 @@
 import styled from 'styled-components'
-import { popularProducts } from '../data'
 import Product from './Product'
+import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import {db} from "../Firebase"
+import { collection, getDocs, query,} from "firebase/firestore";
+
 
 const Container = styled.div`
     padding: 20px;
@@ -8,12 +12,30 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 `
-
 const Products = () => {
+
+    const [ product, setproduct ] = useState([])
+
+    let { id } = useParams();
+    
+    console.log(id);
+
+  useEffect( () => {
+    async function fetchData(){
+    const querySnapshot = await getDocs(query(collection(db, `category/${id}/product` )));
+      let productArray = []
+      querySnapshot.forEach((doc) => {
+        productArray.push({...doc.data(), id: doc.id});
+      });
+      setproduct(productArray)
+      console.log("IdCategory",id)
+    }
+    fetchData();
+}, [id])
     return (
         <Container>
-            {popularProducts.map((item)=>( 
-                <Product item={item} key={item.id}/>
+            {product.map((data)=>( 
+                <Product item={data} key={data.id}/>
             ))}            
         </Container>
     )
