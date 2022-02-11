@@ -45,8 +45,11 @@ justify-content: flex-end;
 align-items: center;
 ${mobile({ flex: 2, justifyContent: "flex-end"})}
 `
-const MenuItem = styled.div`
- font-size: 14px;
+const MenuItem = styled.button`
+    border:none;
+    color: black;
+    background-color: white;
+    font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
   ${mobile({ fontSize: 9, margin:4, })}
@@ -65,8 +68,9 @@ const Navbar = () => {
                     <Logo>LOGO</Logo>
                 </Center>
                 <Right>
-                    <MenuItem>PRODUCTOS</MenuItem>
+                    <Link to="/contacto"> 
                     <MenuItem>CONTACTO</MenuItem>
+                    </Link>
                     <MenuItem><Badge color="secondary" variant="dot">
                         <ShoppingCartOutlined />
                         </Badge></MenuItem>

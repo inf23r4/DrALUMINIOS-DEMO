@@ -7,6 +7,8 @@ import {
 
 } from "react-router-dom";
 import ProductList from './pages/ProductList';
+import ContactoPage from './pages/Contact';
+
 
 
 const App = () => {
@@ -19,10 +21,13 @@ const App = () => {
           <Route path="/category/:id">
               <ProductList/>
           </Route>
+          <Route path="/contacto">
+              <ContactoPage/>
+          </Route>
           </Switch>
     </BrowserRouter>
      
-
+  
   )
 }
 

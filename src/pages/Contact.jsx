@@ -1,13 +1,17 @@
-import React, {Fragment, useState} from 'react';
+import React, { useState } from 'react';
 import Announcement from '../components/Announcement';
+import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { Container, FormContainer, ContainerFragment, Title, ContainerInput, Input, Button, TextArea } from "./ContactStyle"
 
-const Formulario = () => {
+const ContactoPage = () => {
 
 
     const [datos, setDatos] = useState({
         nombre: '',
-        apellido: ''
+        telefono: '',
+        email: '',
+        mensaje:''
     })
 
     const handleInputChange = (event) => {
@@ -19,7 +23,7 @@ const Formulario = () => {
         })
     }
 
-    const enviarDatos = (event) => {
+    const sendDatos = (event) => {
         event.preventDefault()
         console.log('enviando datos...' + datos.nombre + ' ' + datos.apellido)
     }
@@ -28,24 +32,29 @@ const Formulario = () => {
       <Container>
         <Announcement/>
         <Navbar/>
-        <Fragment>
-            <h1>Formulario</h1>
-            <form className="row" onSubmit={enviarDatos}>
-                <div className="col-md-3">
-                    <input type="text" placeholder="Nombre" className="form-control" onChange={handleInputChange} name="nombre"></input>
-                </div>
-                <div className="col-md-3">
-                    <input type="text" placeholder="Apellido" className="form-control" onChange={handleInputChange} name="apellido"></input>
-                </div>
-                <button type="submit" className="btn btn-primary">Enviar</button>
-            </form>
-            <ul>
-                <li>{datos.nombre}</li>
-                <li>{datos.apellido}</li>
-            </ul>
-        </Fragment>
+           <ContainerFragment>
+             <Title>Contacto</Title>
+            <FormContainer onSubmit={sendDatos}>
+                <ContainerInput>
+                    <Input type="text" placeholder="NOMBRE" onChange={handleInputChange} name="nombre"></Input>
+                </ContainerInput>
+                <ContainerInput >
+                    <Input type="text" placeholder="TELEFONO" onChange={handleInputChange} name="telefono"></Input>
+                </ContainerInput>
+            </FormContainer>
+            <FormContainer unColumn="1fr">
+                <ContainerInput >   
+                    <Input type="text" placeholder="E-MAIL"  onChange={handleInputChange} name="email"></Input>
+                </ContainerInput>
+                <ContainerInput >
+                    <TextArea type="text" placeholder="MENSAJE" onChange={handleInputChange} name="mensaje"></TextArea>
+                </ContainerInput>
+                <Button type="submit">Enviar via Email</Button>
+            </FormContainer>
+          </ContainerFragment>
+          <Footer/>
       </Container>
     );
 }
  
-export default Formulario;
+export default ContactoPage;
