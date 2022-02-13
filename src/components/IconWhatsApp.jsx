@@ -1,10 +1,12 @@
 import React from 'react'
 import { Fab } from '@material-ui/core'
 import { WhatsApp } from '@material-ui/icons'
+import styled from 'styled-components'
 
-function IconWhatsapp() {
+const IconWhatsApp = () =>{
   return (
-    <div>   
+    <div>
+        
         <Fab>
             <WhatsApp/>
         </Fab>
@@ -12,4 +14,4 @@ function IconWhatsapp() {
   )
 }
 
-export default IconWhatsapp
+export default IconWhatsApp
