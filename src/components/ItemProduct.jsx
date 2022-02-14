@@ -1,36 +1,14 @@
-import React, {useState} from 'react';
-import styled from "styled-components"
+import React from 'react';
+import { Add, Remove } from "@material-ui/icons";
+import { Button, Amount, AmountContainer, AddContainer, FilterSizeOption, 
+  FilterSize, FilterColor, Filter, FilterTitle, FilterContainer, Price,
+   Desc, Title, InfoContainer, Image, ImgContainer, Wrapper} from "./ItemProdutStyle";
 
-const Container = styled.div`
 
-`
 
-function PageItemProduct() {
-
-    const [ itemProduct, setItemProduct ] = useState([])
-
-    let { id } = useParams();
-
-    useEffect( () => {
-        async function fetchData(){
-        const querySnapshot = await getDocs(query(collection(db, `category/${ id }/product/:idProduct` )));
-          let itemArray = []
-          querySnapshot.forEach((doc) => {
-            itemArray.push({...doc.data(), id: doc.id});
-          });
-          setItemProduct(productArray)
-          console.log("IdCategory",id)
-        }
-        fetchData();
-    }, [id])
+function ItemProduct ({item}) {
 
   return (
-    <Container> 
-        {itemArray.map((item) =>{
-            return (
-                <Container>
-      <Navbar />
-      <Announcement />
       <Wrapper>
         <ImgContainer>
           <Image src= {item.img} />
@@ -66,12 +44,8 @@ function PageItemProduct() {
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-    </Container>
-            )
-        })}
-    </Container>
   
   )
 }
 
-export default PageItemProduct;
+export default ItemProduct;

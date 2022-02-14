@@ -37,9 +37,10 @@ const Container = styled.div`
   &:hover ${Info}{
     opacity: 1;}
 `;
-const Icon = styled.div`
+const Icon = styled.button`
   width: 40px;
   height: 40px;
+  border: none;
   border-radius: 50%;
   background-color: white;
   display: flex;

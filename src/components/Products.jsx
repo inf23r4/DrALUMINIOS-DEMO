@@ -22,7 +22,7 @@ const Products = () => {
 
   useEffect( () => {
     async function fetchData(){
-    const querySnapshot = await getDocs(query(collection(db, `category/${id}/product` )));
+    const querySnapshot = await getDocs(query(collection(db, `category/${ id }/product` )));
       let productArray = []
       querySnapshot.forEach((doc) => {
         productArray.push({...doc.data(), id: doc.id});
