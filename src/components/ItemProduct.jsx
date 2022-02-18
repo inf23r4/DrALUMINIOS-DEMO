@@ -1,12 +1,29 @@
-import React from 'react';
-import { Add, Remove } from "@material-ui/icons";
-import { Button, Amount, AmountContainer, AddContainer, FilterSizeOption, 
-  FilterSize, FilterColor, Filter, FilterTitle, FilterContainer, Price,
+import React, { useContext, useState } from 'react';
+import { Button, Price,
    Desc, Title, InfoContainer, Image, ImgContainer, Wrapper} from "./ItemProdutStyle";
+import ItemButtonCount from "./ItemButtonCount";
+import CartContext from '../context/CartContext';
 
 
 
 function ItemProduct ({item}) {
+
+  const [count, setCount] = useState(1)
+    const { productsAdd } = useContext(CartContext)
+
+    const handleClickComprar = () => {
+        if (count > 0) {
+            productsAdd({
+                id: item.id,
+                name: item.title,
+                img: item.img,
+                count,
+                price: item.price,
+                stock: item.stock,
+            })
+        }
+    }
+
 
   return (
       <Wrapper>
@@ -16,33 +33,21 @@ function ItemProduct ({item}) {
         <InfoContainer>
           <Title>{item.title}</Title>
           <Desc>{item.desc}</Desc>
-          <Price>{item.price}</Price>
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="blanco" />
-              <FilterColor color="aluminio" />
-            </Filter>
-            <Filter>
-              <FilterTitle>Medidas</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>#1</FilterSizeOption>
-                <FilterSizeOption>#2</FilterSizeOption>
-                <FilterSizeOption>#3</FilterSizeOption>
-                <FilterSizeOption>#4</FilterSizeOption>
-                <FilterSizeOption>#5</FilterSizeOption>
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
-          <AddContainer>
-            <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
-            </AmountContainer>
-            <Button>ADD
-            </Button>
-          </AddContainer>
+          <Price>{Intl.NumberFormat('es-AR', {
+        style: 'currency',
+        currency: 'ARS',
+    }).format(item.price)}</Price>
+          
+          <ItemButtonCount
+            setCount={setCount}
+            count={count}
+            min={1}
+            stock={item.stock}
+          />
+          <Button onClick={handleClickComprar}
+                        disabled={item.stock === 0}
+                      >ADD
+                      </Button>
         </InfoContainer>
       </Wrapper>
   
