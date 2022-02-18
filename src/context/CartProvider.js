@@ -3,6 +3,9 @@ import CartContext from './CartContext'
 import { convertToMoney } from '../utils'
 
 export const CartProvider = ({ children }) => {
+
+    const [showModalTable, setShowModalTable] = useState (false);
+
     const [cartItem, setCartItem] = useState([])
 
     const productsAdd = (itemCount) => {
@@ -42,6 +45,8 @@ export const CartProvider = ({ children }) => {
     return (
         <CartContext.Provider
             value={{
+                setShowModalTable,
+                showModalTable,
                 cartItem,
                 productsAdd,
                 deleteProduct,

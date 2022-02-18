@@ -40,7 +40,8 @@ function ItemProduct ({item}) {
               <Amount>1</Amount>
               <Add />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button>ADD
+            </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

@@ -3,11 +3,14 @@ import {db} from "../Firebase"
 import { collection, getDocs, query} from "firebase/firestore";
 import styled from 'styled-components'
 import CategoryItem from './CategoryItem'
+import { mobile } from "../responsive"
+
 
 const Container = styled.div`
     display: flex;
     padding: 20px;
     justify-content: space-between;
+    ${mobile({ flexDirection: "column"})}
 `
 
 const Categories = () => {

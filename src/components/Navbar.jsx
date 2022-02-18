@@ -1,20 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { MenuItem, Right, Logo, Button, Center, Left, Wrapper, Container} from "./NavbarStyle";
 import { ShoppingCartOutlined } from '@material-ui/icons'
 import { Badge } from "@material-ui/core";
 import { Link } from 'react-router-dom'
-import { ModalTable } from "./ModalTableProd"
+import CartContex from '../context/CartContext';
 
 
 
 const Navbar = () => {
-
-    const [showModalTable, setShowModalTable] = useState (false);
+    
+    const { setShowModalTable } = useContext( CartContex );
 
     const openModalTable = () => {
         setShowModalTable(prev => !prev)
     };
-
 
     return (
         <Container>
@@ -36,7 +35,6 @@ const Navbar = () => {
                         <ShoppingCartOutlined />
                         </Badge></MenuItem>
                 </Right>
-                <ModalTable showModalTable={showModalTable} setShowModalTable={setShowModalTable}/>
             </Wrapper>
         </Container>
     )

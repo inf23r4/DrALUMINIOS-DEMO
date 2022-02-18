@@ -9,6 +9,7 @@ import {
 import ProductList from './pages/ProductList';
 import ContactoPage from './pages/Contact';
 import PageItemProduct from "./pages/PageItemProduct"
+import { CartProvider } from './context/CartProvider'
 
 
 
@@ -16,6 +17,7 @@ const App = () => {
 
 
   return (
+    <CartProvider>
     <BrowserRouter>
           <Switch>
           <Route exact path="/"> 
@@ -32,7 +34,7 @@ const App = () => {
           </Route>
           </Switch>
     </BrowserRouter>
-     
+    </CartProvider>
   
   )
 }
