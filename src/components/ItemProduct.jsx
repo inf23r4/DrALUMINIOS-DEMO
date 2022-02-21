@@ -3,6 +3,7 @@ import { Button, Price,
    Desc, Title, InfoContainer, Image, ImgContainer, Wrapper} from "./ItemProdutStyle";
 import ItemCount from "./ItemButtonCount";
 import CartContext from '../context/CartContext';
+import { Link } from 'react-router-dom';
 
 
 
@@ -10,10 +11,12 @@ import CartContext from '../context/CartContext';
 function ItemProduct ({item}) {
 
   const [count, setCount] = useState(1)
+  const [selectCount, setSelectCount] = useState(false)
     const { productsAdd } = useContext(CartContext)
 
     const handleClickComprar = () => {
         if (count > 0) {
+            setSelectCount(true)
             productsAdd({
                 id: item.id,
                 name: item.title,
@@ -45,10 +48,31 @@ function ItemProduct ({item}) {
             min={1}
             stock={item.stock}
           />
-          <Button onClick={handleClickComprar}
-            disabled={item.stock === 0}>
-                          ADD
-                      </Button>
+            {selectCount ? (
+                    <>
+                        <div>
+                            <Link to="/checkout">
+                                <Button>
+                                    Finish buying
+                                </Button>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to="/">
+                                <Button>
+                                    Continue buying
+                                </Button>
+                            </Link>
+                        </div>
+                    </>
+                ) : (
+                    <Button
+                        onClick={handleClickComprar}
+                        disabled={item.stock === 0}
+                    >
+                        Add
+                    </Button>
+                )}
         </InfoContainer>
       </Wrapper>
   
