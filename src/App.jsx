@@ -6,19 +6,24 @@ import {
   Route,
 
 } from "react-router-dom";
+import Navbar from "./components/Navbar"
+import Announcement from "./components/Announcement"
+import Footer from "./components/Footer"
 import ProductList from './pages/ProductList';
 import ContactoPage from './pages/Contact';
-import PageItemProduct from "./pages/PageItemProduct"
-import { CartProvider } from './context/CartProvider'
+import PageItemProduct from "./pages/PageItemProduct";
+import PageTableProd from "./pages/PageTableProd"
+import { CartProvider } from './context/CartProvider';
 
 
 
 const App = () => {
 
-
   return (
-    <CartProvider>
+  <CartProvider>
     <BrowserRouter>
+      <Announcement/>
+      <Navbar/>
           <Switch>
           <Route exact path="/"> 
             <Home />
@@ -32,11 +37,15 @@ const App = () => {
           <Route exact path="/category/:id/:idProduct">
               <PageItemProduct/> 
           </Route>
+          <Route exact path="/checkout">
+              <PageTableProd/> 
+          </Route>
           </Switch>
+       <Footer/>
     </BrowserRouter>
-    </CartProvider>
+  </CartProvider>
   
   )
-}
+};
 
 export default App;

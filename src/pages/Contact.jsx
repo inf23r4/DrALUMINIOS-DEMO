@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import Announcement from '../components/Announcement';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
 import { Container, FormContainer, ContainerFragment, Title, ContainerInput, Input, Button, TextArea } from "./ContactStyle"
 
-const ContactoPage = () => {
 
+const ContactoPage = () => {
 
     const [datos, setDatos] = useState({
         nombre: '',
@@ -28,10 +25,9 @@ const ContactoPage = () => {
         console.log('enviando datos...' + datos.nombre + ' ' + datos.apellido)
     }
 
+
     return (
       <Container>
-        <Announcement/>
-        <Navbar/>
            <ContainerFragment>
              <Title>Contacto</Title>
             <FormContainer onSubmit={sendDatos}>
@@ -52,7 +48,6 @@ const ContactoPage = () => {
                 <Button type="submit">Enviar via Email</Button>
             </FormContainer>
           </ContainerFragment>
-          <Footer/>
       </Container>
     );
 }

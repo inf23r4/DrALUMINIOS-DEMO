@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Button, Price,
    Desc, Title, InfoContainer, Image, ImgContainer, Wrapper} from "./ItemProdutStyle";
-import ItemButtonCount from "./ItemButtonCount";
+import ItemCount from "./ItemButtonCount";
 import CartContext from '../context/CartContext';
+
 
 
 
@@ -32,21 +33,21 @@ function ItemProduct ({item}) {
         </ImgContainer>
         <InfoContainer>
           <Title>{item.title}</Title>
-          <Desc>{item.desc}</Desc>
+          <Desc>{item.id}</Desc>
           <Price>{Intl.NumberFormat('es-AR', {
         style: 'currency',
         currency: 'ARS',
     }).format(item.price)}</Price>
           
-          <ItemButtonCount
+          <ItemCount
             setCount={setCount}
             count={count}
             min={1}
             stock={item.stock}
           />
           <Button onClick={handleClickComprar}
-                        disabled={item.stock === 0}
-                      >ADD
+            disabled={item.stock === 0}>
+                          ADD
                       </Button>
         </InfoContainer>
       </Wrapper>

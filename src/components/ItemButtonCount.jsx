@@ -2,7 +2,7 @@ import React from 'react'
 import { Add, Remove } from "@material-ui/icons";
 import { AmountContainer, AddContainer,  Amount, } from "./ItemProdutStyle";
 
-const ItemButtonCount = ({ min, stock, count, setCount }) => {
+const ItemCount = ({ min, stock, count, setCount }) => {
   const add = () => {
       if (count < stock) setCount(count + 1)
   }
@@ -13,23 +13,20 @@ const ItemButtonCount = ({ min, stock, count, setCount }) => {
 
   return (
       <>
+        {stock > 0 && (
           <>
-              {stock > 0 && (
-                  <>
-                    <AddContainer>
-                      <AmountContainer>
-                      <Remove  onClick={subtract} />
-                      <Amount>{count}</Amount>
-                      <Add onClick={add} />
-                      </AmountContainer>
-                      
-                    </AddContainer>
+            <AddContainer>
+              <AmountContainer>
+                <Remove  onClick={subtract} />
+                  <Amount>{count}</Amount>
+                  <Add disabled={count === stock} onClick={add} />
+              </AmountContainer>        
+            </AddContainer>
                   </>
               )}
-          </>
       </>
   )
 }
 
 
-export default ItemButtonCount
+export default ItemCount
