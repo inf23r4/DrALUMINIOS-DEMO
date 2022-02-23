@@ -28,7 +28,7 @@ const TableCart = () => {
             return (
                 <Product>
                 <ProductDetail>
-                <Image src={item.id} />
+                <Image src={item.img} />
                 <Details>
                   <ProductName>
                     <b>Product:</b> {item.title}

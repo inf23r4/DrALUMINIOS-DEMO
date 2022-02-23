@@ -30,50 +30,20 @@ const InfoContainer = styled.div`
 const Title = styled.h1`
   margin: 20px;
   font-weight: 200;
+  position: relative;
+  top: 80px;
 `;
 
 const Desc = styled.p`
   margin: 20px 0px;
+  position: relative;
+  top: 200px;
 `;
 
 const Price = styled.span`
   font-weight: 100;
   font-size: 40px;
 `;
-
-const FilterContainer = styled.div`
-  width: 50%;
-  margin: 30px 0px;
-  display: flex;
-  justify-content: space-between;
-  ${mobile({ width: "100%" })}
-`;
-
-const Filter = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const FilterTitle = styled.span`
-  font-size: 20px;
-  font-weight: 200;
-`;
-
-const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
-`;
-
-const FilterSize = styled.select`
-  margin-left: 10px;
-  padding: 5px;
-`;
-
-const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
   width: 50%;
@@ -107,11 +77,25 @@ const Button = styled.button`
   background-color: white;
   cursor: pointer;
   font-weight: 500;
+  position: relative;
+  top: 430px;
+  left: 95px;
   &:hover{
       background-color: #f8f4f4;
   }
 `;
+const ContainerButton = styled.div`
 
-export { Button, Amount, AmountContainer, AddContainer, FilterSizeOption, 
-    FilterSize, FilterColor, Filter, FilterTitle, FilterContainer, Price,
+`
+const ItemContainer = styled.div`
+  position: relative;
+  top: 470px;
+  left: 0px;
+`
+const ContainerPrice = styled.div`
+  position: relative;
+  top: 445px;
+`
+
+export { ContainerPrice, ItemContainer, ContainerButton, Button, Amount, AmountContainer, AddContainer, Price,
      Desc, Title, InfoContainer, Image, ImgContainer, Wrapper};

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, Price,
+import { Button, Price, ItemContainer, ContainerButton, ContainerPrice,
    Desc, Title, InfoContainer, Image, ImgContainer, Wrapper} from "./ItemProdutStyle";
 import ItemCount from "./ItemButtonCount";
 import CartContext from '../context/CartContext';
@@ -37,34 +37,37 @@ function ItemProduct ({item}) {
         <InfoContainer>
           <Title>{item.title}</Title>
           <Desc>{item.id}</Desc>
-          <Price>{Intl.NumberFormat('es-AR', {
-        style: 'currency',
-        currency: 'ARS',
-    }).format(item.price)}</Price>
-          
-          <ItemCount
+          <ContainerPrice>
+            <Price>{Intl.NumberFormat('es-AR', {
+              style: 'currency',
+              currency: 'ARS',
+              }).format(item.price)}</Price>
+          </ContainerPrice>
+          <ItemContainer>
+            <ItemCount
             setCount={setCount}
             count={count}
             min={1}
             stock={item.stock}
           />
+          </ItemContainer>
             {selectCount ? (
-                    <>
+                    <ContainerButton>
                         <div>
                             <Link to="/checkout">
                                 <Button>
-                                    Finish buying
+                                    Finalizar Oreden
                                 </Button>
                             </Link>
                         </div>
                         <div>
                             <Link to="/">
                                 <Button>
-                                    Continue buying
+                                    Continuar 
                                 </Button>
                             </Link>
                         </div>
-                    </>
+                    </ContainerButton>
                 ) : (
                     <Button
                         onClick={handleClickComprar}
