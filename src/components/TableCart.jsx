@@ -1,32 +1,37 @@
 import React, { useContext } from "react"
 import ItemButtonCount from "./ItemButtonCount";
-import {Button, SummaryItemPrice, SummaryItemText, SummaryItem, SummaryTitle, Summary, Hr, ProductPrice, 
+import { ProductPrice, 
      PriceDetail, ProductSize, ProductColor, ProductId, ProductName, Details, Image, ProductDetail,
-    Product, Info,  TopText, TopTexts, TopButton, Top, Container } from "./TableCartStyle"
-import CartContext from "../context/CartContext"
+    Product, Button, SummaryItemPrice, SummaryItemText, SummaryItem, SummaryTitle,
+    Summary,  Info,  TopText, TopTexts, TopButton, Top, Container } from "./TableCartStyle"
+import CartContext from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 
 const TableCart = () => {
 
-    const { cartItem, deleteProduct, costoTotal } = useContext(CartContext)
+    const { cartItem, deleteProduct, cantTotal, costoTotal } = useContext(CartContext)
 
     const deleteItem = (item) => {
         deleteProduct(item)
     }
     return (
+      <>
         <Container>
-           <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>{cartItem.id}</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Top>
-        <Info>
+        <Top>
+       <TopButton>CONTINUE SHOPPING</TopButton>
+       <TopTexts>
+         <TopText></TopText>
+         <TopText>Your Wishlist ({cantTotal()})</TopText>
+       </TopTexts>
+        <Link to="/formulario">
+       <TopButton type="filled">CHECKOUT NOW</TopButton>
+        </Link>
+     </Top>
+     <Info>
         {cartItem.map((item) => {
             return (
-                <Product>
+                <Product key={item.id}>
                 <ProductDetail>
                 <Image src={item.img} />
                 <Details>
@@ -34,7 +39,7 @@ const TableCart = () => {
                     <b>Product:</b> {item.title}
                   </ProductName>
                   <ProductId>
-                    <b>ID:</b> 93813718293
+                    <b>ID:</b>{item.id}
                   </ProductId>
                   <ProductColor color="black" />
                   <ProductSize>
@@ -51,24 +56,23 @@ const TableCart = () => {
               </PriceDetail>
               </Product>
             )
+            
          })}
-         </Info>
-         <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>${Intl.NumberFormat('es-AR', {
-        style: 'currency',
-        currency: 'ARS',
-    }).format(costoTotal)}</SummaryItemPrice>
-            </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
-          </Summary>
-        </Container>
+              </Info>
+      <Summary>
+         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+         <SummaryItem>
+         </SummaryItem>
+         <SummaryItem type="total">
+           <SummaryItemText>Total</SummaryItemText>
+           <SummaryItemPrice>${costoTotal()}</SummaryItemPrice>
+         </SummaryItem>
+         <Link to ="/formulario">
+          <Button>CHECKOUT NOW</Button>
+         </Link>
+       </Summary>
+     </Container> 
+      </>
     )
 }
 

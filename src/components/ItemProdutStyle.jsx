@@ -3,7 +3,7 @@ import { mobile } from "../responsive"
 
 const Wrapper = styled.div`
   background-color: transparent;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   ${mobile({ padding: "10px", flexDirection:"column" })}
@@ -22,23 +22,28 @@ const Image = styled.img`
 `;
 
 const InfoContainer = styled.div`
+  padding: 20px;
   background: white;
-  padding: 0px 50px;
   ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
   margin: 20px;
+  margin-top: 50px;
+  height: 100px;
   font-weight: 200;
-  position: relative;
-  top: 80px;
 `;
 
 const Desc = styled.p`
-  margin: 20px 0px;
-  position: relative;
-  top: 200px;
+  margin-bottom: 20px;
+  height: 350px;
+  ${mobile({ top: "20px" })}
 `;
+
+const ContainerPrice = styled.div`
+  margin-top: 20px;
+  margin:20px;
+`
 
 const Price = styled.span`
   font-weight: 100;
@@ -77,25 +82,38 @@ const Button = styled.button`
   background-color: white;
   cursor: pointer;
   font-weight: 500;
-  position: relative;
-  top: 430px;
-  left: 95px;
   &:hover{
       background-color: #f8f4f4;
   }
 `;
-const ContainerButton = styled.div`
 
-`
+
+
 const ItemContainer = styled.div`
-  position: relative;
-  top: 470px;
-  left: 0px;
-`
-const ContainerPrice = styled.div`
-  position: relative;
-  top: 445px;
-`
 
-export { ContainerPrice, ItemContainer, ContainerButton, Button, Amount, AmountContainer, AddContainer, Price,
+`;
+
+
+const ContainerButton = styled.div`
+ display: flex;
+`
+const WrapperButton = styled.div`
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+
+`
+const ButtonModal = styled.button`
+    padding: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
+`;
+
+
+export {ButtonModal,ContainerButton, WrapperButton, ContainerPrice, ItemContainer, Button, Amount, AmountContainer, AddContainer, Price,
      Desc, Title, InfoContainer, Image, ImgContainer, Wrapper};

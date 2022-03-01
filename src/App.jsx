@@ -13,7 +13,9 @@ import ProductList from './pages/ProductList';
 import ContactoPage from './pages/Contact';
 import PageItemProduct from "./pages/PageItemProduct";
 import PageTableProduct from "./pages/PageTableProduct"
+import PageTableForm from "./pages/PageTableForm"
 import { CartProvider } from './context/CartProvider';
+
 
 
 
@@ -39,6 +41,9 @@ const App = () => {
           </Route>
           <Route exact path="/checkout">
               <PageTableProduct/> 
+          </Route>
+          <Route exact path="/formulario">
+              <PageTableForm/> 
           </Route>
           </Switch>
        <Footer/>

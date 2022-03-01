@@ -47,6 +47,7 @@ const Bottom = styled.div`
 `;
 
 const Info = styled.div`
+  padding: 50px;
   flex: 3;
 `;
 

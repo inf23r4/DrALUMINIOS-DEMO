@@ -11,11 +11,7 @@ import CartContext from '../context/CartContext';
 
 const Navbar = () => {
 
-    const { setShowModalTable } = useContext( CartContext );
-
-  const openModalTable = () => {
-      setShowModalTable(prev => !prev)
-  };
+    const { count } = useContext(CartContext)
 
     return (
         <Container>
@@ -32,10 +28,17 @@ const Navbar = () => {
                     <Link to="/contacto"> 
                     <MenuItem>CONTACTO</MenuItem>
                     </Link>
-                    <MenuItem onClick= {openModalTable}>
-                        <Badge color="secondary" variant="dot">
+                   { count > 0 ?( <MenuItem ><Link to = "/checkout">
+                    <Badge color="secondary" variant="dot">
                         <ShoppingCartOutlined />
-                        </Badge></MenuItem>
+                        </Badge>
+                   </Link>     
+                    </MenuItem>):(
+                         <MenuItem ><Link to = "/checkout">
+                            <ShoppingCartOutlined />
+                         </Link>
+                     </MenuItem>
+                    ) }
                 </Right>
             </Wrapper>
         </Container>
