@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive"
 
 const Container = styled.div`
-    height:500px;
+    height:450px;
     padding: 10px;
     background-image: url("https://www.viviendasaludable.es/wp-content/uploads/2020/11/Ventana-Aluminio-o-PVC.jpg");
     background-size: cover;

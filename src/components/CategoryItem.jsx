@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { mobile } from "../responsive"
 
 
 const Container = styled.div`
 
   flex: 1;
   margin: 3px;
-  height: 25vh;
+  height: 24vh;
   position: relative;
+  ${mobile({ height: "350px" })}
 `
 
 const Image = styled.img`

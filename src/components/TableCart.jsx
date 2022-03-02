@@ -6,11 +6,15 @@ import { ProductPrice,
     Summary,  Info,  TopText, TopTexts, TopButton, Top, Container } from "./TableCartStyle"
 import CartContext from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { useLocalStorage } from "../useLocalStorage";
 
 
 const TableCart = () => {
 
     const { cartItem, deleteProduct, cantTotal, costoTotal } = useContext(CartContext)
+    window.localStorage.setItem("cartItem", JSON.stringify(cartItem));
+    window.localStorage.setItem("cantTotal", JSON.stringify(cantTotal()));
+    window.localStorage.setItem("costoTotal", JSON.stringify(costoTotal()));
 
     const deleteItem = (item) => {
         deleteProduct(item)
