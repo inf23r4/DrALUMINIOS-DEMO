@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
-import CartContext from '../context/CartContext';
 import { mobile } from "../responsive"
 
 const Container = styled.div`
@@ -58,8 +57,7 @@ const PageTableForm = () => {
     const [datos, setDatos] = useState({
         nombre: '',
         telefono: '',
-        email: '',
-        mensaje:''
+        email: ''
     })
 
     const handleInputChange = (event) => {
@@ -73,16 +71,8 @@ const PageTableForm = () => {
 
     const sendDatos = (event) => {
         event.preventDefault()
-        console.log('enviando datos...' + datos.nombre + ' ' + datos.apellido)
+        console.log('enviando datos...' + datos.nombre + ' ' + datos.telefono)
     }
-    const { count, costoTotal, CantTotal,} = useContext(CartContext)
-
-    useEffect(() =>{
-        console.log(count);
-        console.log(costoTotal());
-        console.log(CantTotal());
-
-    })
 
   return (
     <Container>

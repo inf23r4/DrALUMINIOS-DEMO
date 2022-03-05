@@ -31,14 +31,18 @@ const PageTableProduct = () => {
 await setDoc(doc(db, "Ordenes", `${output}`), docData)
   }
 
-  const { costoTotal, cantTotal} = useContext(CartContext)
+  const { costoTotal, cantTotal, cartItem } = useContext(CartContext);
+    window.localStorage.setItem("cartItem", JSON.stringify(cartItem));
+    window.localStorage.setItem("cantTotal", JSON.stringify(cantTotal()));
+    window.localStorage.setItem("costoTotal", JSON.stringify(costoTotal()));
 
-  console.log(costoTotal)
+    let localCantTotal = JSON.parse(localStorage.getItem("cantTotal"));
+
 
   return (
     <>
         
-      {cantTotal() > 0 ? (<><TableCart/></>) : (<><ProductMenssage/></>)}
+      {localCantTotal > 0 ? (<><TableCart/></>) : (<><ProductMenssage/></>)}
   
   </>
   )

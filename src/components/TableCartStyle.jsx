@@ -2,7 +2,10 @@ import styled from "styled-components"
 
 import { mobile } from "../responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin: auto;
+  width: 800px;
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -123,7 +126,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 50vh;
+  height: 30vh;
 `;
 
 const SummaryTitle = styled.h1`

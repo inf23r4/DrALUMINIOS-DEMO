@@ -1,20 +1,15 @@
 import React, { useContext } from "react"
-import ItemButtonCount from "./ItemButtonCount";
 import { ProductPrice, 
      PriceDetail, ProductSize, ProductColor, ProductId, ProductName, Details, Image, ProductDetail,
     Product, Button, SummaryItemPrice, SummaryItemText, SummaryItem, SummaryTitle,
     Summary,  Info,  TopText, TopTexts, TopButton, Top, Container } from "./TableCartStyle"
 import CartContext from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { useLocalStorage } from "../useLocalStorage";
 
 
 const TableCart = () => {
 
     const { cartItem, deleteProduct, cantTotal, costoTotal } = useContext(CartContext)
-    window.localStorage.setItem("cartItem", JSON.stringify(cartItem));
-    window.localStorage.setItem("cantTotal", JSON.stringify(cantTotal()));
-    window.localStorage.setItem("costoTotal", JSON.stringify(costoTotal()));
 
     const deleteItem = (item) => {
         deleteProduct(item)
@@ -22,15 +17,15 @@ const TableCart = () => {
     return (
       <>
         <Container>
-        <Top>
-       <TopButton>CONTINUE SHOPPING</TopButton>
-       <TopTexts>
-         <TopText></TopText>
-         <TopText>Your Wishlist ({cantTotal()})</TopText>
-       </TopTexts>
-        <Link to="/formulario">
-       <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Link>
+          <Top>
+          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopTexts>
+            <TopText></TopText>
+            <TopText>Your Wishlist ({cantTotal()})</TopText>
+          </TopTexts>
+          <Link to="/formulario">
+            <TopButton type="filled">CHECKOUT NOW</TopButton>
+          </Link>
      </Top>
      <Info>
         {cartItem.map((item) => {
@@ -52,12 +47,12 @@ const TableCart = () => {
                 </Details>
               </ProductDetail>
               <PriceDetail>
-              <ItemButtonCount/>
               <ProductPrice>{Intl.NumberFormat('es-AR', {
                              style: 'currency',
                              currency: 'ARS',
                             }).format(item.price)}</ProductPrice>
               </PriceDetail>
+              <TopButton> REMOVE </TopButton>
               </Product>
             )
             
@@ -69,7 +64,7 @@ const TableCart = () => {
          </SummaryItem>
          <SummaryItem type="total">
            <SummaryItemText>Total</SummaryItemText>
-           <SummaryItemPrice>${costoTotal()}</SummaryItemPrice>
+           <SummaryItemPrice>{}</SummaryItemPrice>
          </SummaryItem>
          <Link to ="/formulario">
           <Button>CHECKOUT NOW</Button>
