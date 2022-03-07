@@ -9,7 +9,13 @@ import { Link } from "react-router-dom";
 
 const TableCart = () => {
 
-    const { cartItem, deleteProduct, cantTotal, costoTotal } = useContext(CartContext)
+    const { deleteProduct } = useContext(CartContext)
+
+    let localCantTotal = JSON.parse(window.localStorage.getItem("cantTotal"));
+    let localCostoTotal = JSON.parse(window.localStorage.getItem("costoTotal"));
+    let localCartItem = JSON.parse(window.localStorage.getItem("cartItem"));
+
+
 
     const deleteItem = (item) => {
         deleteProduct(item)
@@ -21,14 +27,14 @@ const TableCart = () => {
           <TopButton>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText></TopText>
-            <TopText>Your Wishlist ({cantTotal()})</TopText>
+            <TopText>Your Wishlist ({localCantTotal})</TopText>
           </TopTexts>
           <Link to="/formulario">
             <TopButton type="filled">CHECKOUT NOW</TopButton>
           </Link>
      </Top>
      <Info>
-        {cartItem.map((item) => {
+        {localCartItem.map((item) => {
             return (
                 <Product key={item.id}>
                 <ProductDetail>
@@ -52,19 +58,16 @@ const TableCart = () => {
                              currency: 'ARS',
                             }).format(item.price)}</ProductPrice>
               </PriceDetail>
-              <TopButton> REMOVE </TopButton>
+              <b> {item.count} </b>
               </Product>
             )
             
          })}
               </Info>
       <Summary>
-         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-         <SummaryItem>
-         </SummaryItem>
          <SummaryItem type="total">
            <SummaryItemText>Total</SummaryItemText>
-           <SummaryItemPrice>{}</SummaryItemPrice>
+           <SummaryItemPrice>{localCostoTotal}</SummaryItemPrice>
          </SummaryItem>
          <Link to ="/formulario">
           <Button>CHECKOUT NOW</Button>

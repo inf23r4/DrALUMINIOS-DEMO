@@ -4,7 +4,7 @@ import { mobile } from "../responsive";
 
 const Container = styled.div`
   margin: auto;
-  width: 800px;
+  max-width: 800px;
 `;
 
 const Wrapper = styled.div`
